@@ -1,1 +1,1 @@
-Link del tutorial: https://www.youtube.com/watch?v=djMy4QsPWiI
+Exercici completat amb l'ajuda de ChatGPT i els vídeos guia que van proporcionar els companys.
