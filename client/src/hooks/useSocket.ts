@@ -7,7 +7,21 @@ export const useSocket = (): Socket | null => {
   const socketRef = useRef<Socket | null>(null);
 
   useEffect(() => {
-    socketRef.current = io(SOCKET_URL);
+    const token = localStorage.getItem('accessToken');
+
+    socketRef.current = io(SOCKET_URL, {
+      auth: {
+        token: token,
+      },
+    });
+
+    socketRef.current.on('connect', () => {
+      console.log('Socket conectado con ID:', socketRef.current?.id);
+    });
+    
+    socketRef.current.on('disconnect', () => {
+      console.log('Socket desconectado.');
+    });
 
     return () => {
       socketRef.current?.disconnect();
